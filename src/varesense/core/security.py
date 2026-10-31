@@ -1,6 +1,7 @@
 import hashlib
 import hmac
 import os
+import uuid
 
 import jwt
 from jwt import PyJWTError
@@ -27,8 +28,13 @@ def verify_password(password: str, stored: str) -> bool:
         return False
 
 
+TOKEN_KIND_ACCESS = "access"
+TOKEN_KIND_REFRESH = "refresh"
+
+
 def create_token(subject: str, ttl_minutes: int, extra: dict | None = None) -> str:
-    payload = {"sub": subject, "exp": _exp(ttl_minutes)}
+    # jti guarantees tokens differ per issuance (refresh rotation).
+    payload = {"sub": subject, "jti": uuid.uuid4().hex, "exp": _exp(ttl_minutes)}
     if extra:
         payload.update(extra)
     return jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_algorithm)

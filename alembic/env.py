@@ -5,8 +5,15 @@ from alembic import context
 from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
+from varesense.alerts import models as alerts_models  # noqa: F401  register tables
+from varesense.analytics import models as analytics_models  # noqa: F401  register tables
 from varesense.assets import models as assets_models  # noqa: F401  register tables
+from varesense.audit import models as audit_models  # noqa: F401  register tables
 from varesense.auth import models as auth_models  # noqa: F401  register tables
+from varesense.devices import models as devices_models  # noqa: F401  register tables
+from varesense.energy import models as energy_models  # noqa: F401  register tables
+from varesense.maintenance import models as maintenance_models  # noqa: F401  register tables
+from varesense.telemetry import models as telemetry_models  # noqa: F401  register tables
 from varesense.core.config import settings
 from varesense.core.db import Base
 

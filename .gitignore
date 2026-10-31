@@ -6,7 +6,6 @@ __pycache__/
 *.pyc
 .env
 dist/
-tests/
 *.egg-info/
 
 # --- planning / docs (not part of shipped system)
