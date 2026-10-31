@@ -1,0 +1,17 @@
+# --- Python / app
+.venv/
+.mypy_cache
+.pytest_cache
+__pycache__/
+*.pyc
+.env
+dist/
+tests/
+*.egg-info/
+
+# --- planning / docs (not part of shipped system)
+.scratch/
+docs/
+GLOSSARY.md
+AGENTS.md
+
